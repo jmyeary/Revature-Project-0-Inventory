@@ -1,6 +1,5 @@
 import mymenu
 from pymongo import MongoClient
-from pprint import pprint
 
 #selecting the proper mongoDB
 cluster = MongoClient("mongodb://localhost:27017/")
@@ -11,6 +10,9 @@ collection1 = db["inventory_onhand"]
 
 #collection2 is master collection
 collection2 = db["master"]
+
+#collection 3 is inventory on-order
+collection3 = db["inventory_onorder"]
 
 mymenu.main_menu()
 menu_option = int(input('Enter your option: '))
@@ -43,15 +45,23 @@ while menu_option != 0:
                 temp_sku = int(input('Enter a SKU number : '))
                 collection2.delete_one({'sku': temp_sku})
                 exit()
- #   elif menu_option == 3:
- #       mymenu.master_menu()     #call our menu
- #       menu_option3 = int(input("Enter your option: "))
- #       while menu_option3 != 0:
+    elif menu_option == 3:
+         mymenu.onorder_menu()     #call our menu
+         menu_option3 = int(input("Enter your option: "))
+         while menu_option3 != 0:
+             if menu_option3 == 1:
+                 # Run through the entire collection, extract each sku number and product name from the document, print them in an f-string for readability
+                 for x in collection3.find():
+                     print(f"SKU: {x['sku']} | Product Name: {x['product_name']} | Quantity: {x['quantity_onorder']}")
+                 exit()
+             elif menu_option3 == 2:
+                 temp_sku = int(input('Enter a SKU number: '))
+                 temp_qty = int(input('Enter quantity on order: '))
+                 collection3.update_one({'sku': temp_sku}, {"$set": {'quantity_onorder': temp_qty}})
+                 print(f"You have successfully ordered {temp_qty} units of SKU # {temp_sku}")
+                 exit()
 
     else:
         print("Invalid option.\n")
     mymenu.main_menu()
     menu_option = int(input('Enter your option: '))
-
-#idea - a fourth option that allows the user to display a list of all items in on-hand inventory, then prompts the user
-#to see if they'd like to restock. If yes, then place an order for 1000 units and update on-order inventory to reflect that
