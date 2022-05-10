@@ -65,3 +65,8 @@ while menu_option != 0:
         print("Invalid option.\n")
     mymenu.main_menu()
     menu_option = int(input('Enter your option: '))
+
+    #For future expansion of this program, the first step would be to integrate the program with hardware such as
+    #a scanning tool to automate input of SKU numbers. Another next step would be to use machine learning algorithms,
+    #specifically regression analysis, in order to facilitate the automation of ordering more inventory based on
+    #data from the store that shows the optimal level at which to restock, factoring in shipping time
