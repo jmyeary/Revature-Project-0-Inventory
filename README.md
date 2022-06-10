@@ -26,6 +26,19 @@ gh repo clone jmyeary/Revature-Project-0-Inventory
 
 > Project utilizes MongoDB so it will only work with that technology. Not compatible with SQL or other RDBs.
 
+* Ensure the following variables are adjusted for your particular database:
+
+cluster = MongoClient("YOUR SERVER IP")
+db = cluster["YOUR CLUSTER NAME"]
+
+#collection 1 is on-hand inventory
+collection1 = db["YOUR COLLECTION1"]
+
+#collection2 is master collection
+collection2 = db["YOUR COLLECTION2"]
+
+#collection 3 is inventory on-order
+collection3 = db["YOUR COLLECTION3"]
 
 ## Usage
 
