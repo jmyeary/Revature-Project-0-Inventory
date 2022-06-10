@@ -26,8 +26,6 @@ gh repo clone jmyeary/Revature-Project-0-Inventory
 
 > Project utilizes MongoDB so it will only work with that technology. Not compatible with SQL or other RDBs.
 
-- All the `code` required to get started
-- Images of what it should look like
 
 ## Usage
 
