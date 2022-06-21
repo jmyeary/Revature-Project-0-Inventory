@@ -19,6 +19,7 @@ List of features ready and TODOs for future development
 To-do list:
 * Integrate machine learning algorithms to find the ideal stock level and alert management when they need to place an order
 * Integrate with bar code scanners to allow real-time displays of inventory vs cyclical estimates
+* Fully integrate cloud HDFS infrastructure to truly harness the power of the Spark ecosystem
 
 ## Getting Started
    
